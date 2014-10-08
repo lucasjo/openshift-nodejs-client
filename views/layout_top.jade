@@ -1,0 +1,39 @@
+//
+   Created by kikimans on 2014-10-06.
+
+extends layout
+
+block nav-top
+    .navbar.navbar-inverse.navbar-fixed-top(role='navigation')
+        .container
+            .navbar-header
+                button.navbar-toggle.collapsed(type='button', data-toggle='collapse',data-target='.navbar-collapse')
+                    span.sr-only Tpggle navation
+                    span.icon-bar
+                    span.icon-bar
+                    span.icon-bar
+                a.navbar-brand(href='#') OpenShift Rest Api Client
+            .collapse.navbar-collapse
+                ul.nav.navbar-nav
+                    li
+                        a(href='#') Api Test
+                    li
+                        a(href='#') Api Link
+                    li
+                        a(href='#') Admin
+                .navbar-right
+                    if (session.username)
+                        .btn-group.navbar-btn
+                            button.btn.btn-success.dropdown-toggle(data-toggle='dropdown') #{session.username}
+                                span.caret
+                            ul.dropdown-menu(role='menu')
+                                li
+                                    a(href='#') setting
+                                li
+                                    a(href='/logout') logout
+                    else
+                        a.btn.btn-success.navbar-btn(role='button', href='/join') sign Up
+                        a.btn.btn-default.navbar-btn(role='button', href='/login' style='margin-left:8px;') sign In
+
+
+

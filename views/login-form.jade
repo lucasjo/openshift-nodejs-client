@@ -1,0 +1,21 @@
+//
+   Created by kikimans on 2014-10-07.
+extends layout_top
+
+block content
+    .container
+        form(role='form', action='/login', method='POST' style='max-width:500px;margin-left:250px;margin-top:100px')
+            h2 Please Sign In
+            input.form-control(type='email', placeholder='Email', required='autofocus', id='username' name='username')
+            br
+            input.form-control(type='password', placeholder='Paswword', required='autofocus', id='password' name='password')
+            br
+            button.btn.btn-lg.btn-primary.btn-block(type='submit') Sign In
+        if (message)
+            alert.alert-danger(role='alert') #{message}
+    script(type='text/javascript', src='https://code.jquery.com/jquery-1.11.1.min.js')
+    script(type='text/javascript', src='/bootstrap/js/bootstrap.min.js')
+
+
+
+

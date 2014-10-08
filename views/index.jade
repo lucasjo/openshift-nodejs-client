@@ -1,0 +1,28 @@
+extends layout
+extends layout_top
+block content
+    .jumbotron
+        .container
+            h1 OPENSHIFT JAVASCRIPT API CLIENT
+            p OpenShift에서 사용하는 Rest Api 테스트 openpaas 에 제공하는 rest server, OpenShift Console Admin을 제공하는 통합 Client Site 입니다. 또한 설치형 패키지로 입니다.
+            p
+                a.btn.btn-primary.btn-lg(role='button') Learn more &raquo;
+    .container
+        .row
+            .col-md-4
+                h2 Rest API Test
+                p Rest Api를 직접 테스트하여 결과값을 확인 할 수 있다.
+                p
+                    a.btn.btn-default(role='button', href='/apitest') 자세히 보기 &raquo;
+            .col-md-4
+                h2 MyApp Service
+                p Rest API를 이용하여 OpenShift Paas 서비스를 할 수 있는 웹 서비스
+                p
+                    a.btn.btn-default(role='button') 자세히 보기 &raquo;
+            .col-md-4
+                h2 OpenShift Console Admin
+                p 설치된 OpenShift의 Admin Console
+                p
+                    a.btn.btn-default(role='button') 자세히 보기 &raquo;
+    script(type='text/javascript', src='https://code.jquery.com/jquery-1.11.1.min.js')
+    script(type='text/javascript', src='/bootstrap/js/bootstrap.min.js')

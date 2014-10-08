@@ -1,0 +1,34 @@
+//
+   Created by kikimans on 2014-10-08.
+extends layout_top
+
+block content
+    h2 OpenShift Rest API Test
+    .container
+        form(role='form', method='POST', action='/apitest' id='apitestFrom')
+            .form-group
+                label(for='username') OpenShift User Account
+                input.form-control(type='text' id='username', name='username', placeholder='Enter OpenShift Account')
+            .form-group
+                label(for='password') OpenShift User Account Password
+                input.form-control(type='password' id='password', name='password', placeholder='Enter OpenShift Account Password')
+            .form-group
+                label(for='apiurl') OpenShift User Account Password
+                input.form-control(type='text' id='apiurl', name='apiurl', placeholder='Rest API URL', readonly='true')
+            .form-group
+                label(for='method') Method
+                select.form-control(id='method', name='method')
+                    option(value='get') GET
+                    option(value='post') POST
+                    option(value='put') PUT
+                    option(value='delete') DELETE
+            button.btn.btn-default(type='button' id='btn' name='btn') Send
+    .container
+        #apiresult.panel.panel-info
+            .panel-body
+
+    script(type='text/javascript', src='https://code.jquery.com/jquery-1.11.1.min.js')
+    script(type='text/javascript', src='/bootstrap/js/bootstrap.min.js')
+    script(type='text/javascript', src='/javascripts/apitest/index.js')
+
+
