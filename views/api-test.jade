@@ -1,34 +1,55 @@
 //
    Created by kikimans on 2014-10-08.
-extends layout_top
-
+extends layout_default
+block headstylesheet
+    link(rel='stylesheet', href='/bootstrap/css/bootstrap.min.css')
+    link(rel='stylesheet', href='/stylesheets/custom/bootstrap_custorm.css')
+    link(rel='stylesheet', href='/stylesheets/custom/sidebar.css')
+    link(rel='stylesheet', href='/stylesheets/custom/json2html.css')
+block navbar
+    include layout_top
 block content
-    h2 OpenShift Rest API Test
-    .container
-        form(role='form', method='POST', action='/apitest' id='apitestFrom')
-            .form-group
-                label(for='username') OpenShift User Account
-                input.form-control(type='text' id='username', name='username', placeholder='Enter OpenShift Account')
-            .form-group
-                label(for='password') OpenShift User Account Password
-                input.form-control(type='password' id='password', name='password', placeholder='Enter OpenShift Account Password')
-            .form-group
-                label(for='apiurl') OpenShift User Account Password
-                input.form-control(type='text' id='apiurl', name='apiurl', placeholder='Rest API URL', readonly='true')
-            .form-group
-                label(for='method') Method
-                select.form-control(id='method', name='method')
-                    option(value='get') GET
-                    option(value='post') POST
-                    option(value='put') PUT
-                    option(value='delete') DELETE
-            button.btn.btn-default(type='button' id='btn' name='btn') Send
-    .container
-        #apiresult.panel.panel-info
-            .panel-body
+    .container-fluid
+        .row
+            .col-sm-3.col-md-2.sidebar
+                ul.nav.nav-sidebar.list-group
+            .col-sm-9.col-sm-offset-3.col-md-10.col-md-offset-2.main
+                h1.page-header API TEST
+                .row.placeholder
+                    form.form-horizontal(role='form', id='apitestFrom')
+                        .form-group
+                            label.col-sm-4.control-label(for='username') User Account
+                            .col-sm-8
+                                input.form-control(type='text' id='username', name='username', placeholder='Enter OpenShift Account')
+                        .form-group
+                            label.col-sm-4.control-label(for='password') User Password
+                            .col-sm-8
+                                input.form-control(type='password' id='password', name='password', placeholder='Enter OpenShift Account Password')
+                        .form-group
+                            label.col-sm-4.control-label(for='apiurl') URL
+                            .col-sm-8
+                                input.form-control(type='text' id='apiurl', name='apiurl', placeholder='Rest API URL', readonly='true')
+                        .form-group
+                            label.col-sm-4.control-label(for='method') Method
+                            .col-sm-8
+                                select.form-control(id='method', name='method')
+                                    option(value='get') GET
+                                    option(value='post') POST
+                                    option(value='put') PUT
+                                    option(value='delete') DELETE
+                        .form-group
+                            .col-sm-offset-4.col-sm-8
+                                button.btn.btn-default(type='button' id='btn' name='btn') Send
+                        .alert.alert-danger(style='display:none')
+                h2.sub-header Result
+                #apiresult.panel.panel-info
+                    .panel-body
 
+block bodyscript
     script(type='text/javascript', src='https://code.jquery.com/jquery-1.11.1.min.js')
     script(type='text/javascript', src='/bootstrap/js/bootstrap.min.js')
+    script(type='text/javascript', src='/javascripts/json2html/jquery.json2html.js')
+    script(type='text/javascript', src='/javascripts/json2html/json2html.js')
     script(type='text/javascript', src='/javascripts/apitest/index.js')
 
 

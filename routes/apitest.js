@@ -5,6 +5,7 @@ var express = require('express');
 var router = express.Router();
 
 var url = require('url');
+var https = require('https');
 
 var openshiftClient = require('../lib/openshift');
 
@@ -26,10 +27,14 @@ router
         res.render('api-test');
     })
     .post('/', function(req,res){
+        console.log('apitest');
+        console.log(req.body.apiurl);
         options.hostname = url.parse(req.body.apiurl).hostname;
         options.path = url.parse(req.body.apiurl).pathname;
         options.method = req.body.method;
         options.headers.Authorization = 'Basic ' + new Buffer(req.body.username + ':' + req.body.password).toString('base64');
+        options.agent = new https.Agent(options);
+        console.log('apitest1');
         openshiftClient.excute(options, function(datas){
             console.log(datas);
             if(datas){
@@ -37,7 +42,7 @@ router
             }else{
                 res.redirect('./api-test');
             }
-        })
+        });
 
     })
 

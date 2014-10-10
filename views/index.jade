@@ -1,5 +1,12 @@
-extends layout
-extends layout_top
+extends layout_default
+
+block headstylesheet
+    link(rel='stylesheet', href='/bootstrap/css/bootstrap.min.css')
+    link(rel='stylesheet', href='/stylesheets/jumbotron.css')
+
+block navbar
+    include layout_top
+
 block content
     .jumbotron
         .container
@@ -24,5 +31,6 @@ block content
                 p 설치된 OpenShift의 Admin Console
                 p
                     a.btn.btn-default(role='button') 자세히 보기 &raquo;
+block bodyscript
     script(type='text/javascript', src='https://code.jquery.com/jquery-1.11.1.min.js')
     script(type='text/javascript', src='/bootstrap/js/bootstrap.min.js')

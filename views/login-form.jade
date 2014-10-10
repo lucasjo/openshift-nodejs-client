@@ -1,6 +1,11 @@
 //
    Created by kikimans on 2014-10-07.
-extends layout_top
+extends layout_default
+block headstylesheet
+    link(rel='stylesheet', href='/bootstrap/css/bootstrap.min.css')
+
+block navbar
+    include layout_top
 
 block content
     .container
@@ -13,6 +18,7 @@ block content
             button.btn.btn-lg.btn-primary.btn-block(type='submit') Sign In
         if (message)
             alert.alert-danger(role='alert') #{message}
+block bodyscript
     script(type='text/javascript', src='https://code.jquery.com/jquery-1.11.1.min.js')
     script(type='text/javascript', src='/bootstrap/js/bootstrap.min.js')
 
