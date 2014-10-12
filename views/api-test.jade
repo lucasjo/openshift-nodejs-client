@@ -20,15 +20,21 @@ block content
                         .form-group
                             label.col-sm-4.control-label(for='username') User Account
                             .col-sm-8
-                                input.form-control(type='text' id='username', name='username', placeholder='Enter OpenShift Account')
+                                input.form-control(type='text', id='username', name='username', placeholder='Enter OpenShift Account')
                         .form-group
                             label.col-sm-4.control-label(for='password') User Password
                             .col-sm-8
-                                input.form-control(type='password' id='password', name='password', placeholder='Enter OpenShift Account Password')
+                                input.form-control(type='password', id='password', name='password', placeholder='Enter OpenShift Account Password')
                         .form-group
                             label.col-sm-4.control-label(for='apiurl') URL
                             .col-sm-8
-                                input.form-control(type='text' id='apiurl', name='apiurl', placeholder='Rest API URL', readonly='true')
+                                input.form-control(type='text', id='apiurl', name='apiurl', placeholder='Rest API URL', readonly='true')
+                        .form-group
+                            label.col-sm-4.control-label(for='urlparam') URL Param
+                            .col-sm-4
+                                input.form-control(type='text', id='urlkey', name='urlkey', placeholder='Key')
+                            .col-sm-4
+                                input.form-control(type='text', id='urlvalue', name='urlvalue', placeholder='value')
                         .form-group
                             label.col-sm-4.control-label(for='method') Method
                             .col-sm-8
@@ -39,7 +45,8 @@ block content
                                     option(value='delete') DELETE
                         .form-group
                             .col-sm-offset-4.col-sm-8
-                                button.btn.btn-default(type='button' id='btn' name='btn') Send
+                                button.btn.btn-primary(type='button', id='parambtn', name='parambtn') Parameter Add
+                                button.btn.btn-default(type='button', id='btn', name='btn', style='margin-left: 10px;') Send
                         .alert.alert-danger(style='display:none')
                 h2.sub-header Result
                 #apiresult.panel.panel-info

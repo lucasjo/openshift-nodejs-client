@@ -3,6 +3,8 @@
  */
 var defaultAPIURL = 'https://broker-test.ucareme.co.kr/broker/rest/api'
 
+var paramIdx = 0;
+
 var transforms = {
     'object':{'tag':'div','class':'package ${show} ${type}','children':[
         {'tag':'div','class':'header','children':[
@@ -46,7 +48,7 @@ $(document).ready(function(){
             $('.alert').show();
             btn.button('reset');
         }
-        var historyStr = '<li class="list-group-item">' + $('#apiurl').val() + '</li>';
+        var historyStr = '<li class="list-group-item alert alert-info">' + $('#apiurl').val() + '</li>';
         $('.nav.nav-sidebar.list-group').append(historyStr)
 
         var formdata = $('#apitestFrom').serialize();
@@ -66,7 +68,31 @@ $(document).ready(function(){
             }
         })
 
+    });
+
+    //parameter button event
+    $('#parambtn').on('click', function(){
+        if($('#urlkey').val() == '' || $('urlvalue').val() == ''){
+            alert('parameter key And Value was null');
+            return false;
+        }else{
+            if(paramIdx == 0){
+                $('#apiurl').val($('#apiurl').val() + '?');
+                var paramValue = $('#urlkey').val() + '=' + $('#urlvalue').val();
+                $('#apiurl').val($('#apiurl').val() + paramValue);
+                paramIdx += 1;
+            }else{
+                $('#apiurl').val($('#apiurl').val() + '&');
+                var paramValue = $('#urlkey').val() + '=' + $('#urlvalue').val();
+                $('#apiurl').val($('#apiurl').val() + paramValue);
+                paramIdx=+1
+            }
+            $('#urlkey').val('');
+            $('#urlvalue').val('');
+        }
+
     })
+
 });
 
 function getValue(obj) {
@@ -177,6 +203,12 @@ function regEvents() {
             var splitText = $(this).text().split('\'');
             $('#apiurl').val(splitText[1]);
         }
+    });
+
+    //sidebar event
+    $('ul.nav.nav-sidebar.list-group > li').on('click', function(){
+        console.log('info : '+ $(this).text());
+        $('#apiurl').val($(this).text());
     });
 
 
