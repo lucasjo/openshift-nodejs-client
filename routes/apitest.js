@@ -27,18 +27,19 @@ router
         res.render('api-test');
     })
     .post('/', function(req,res){
-        console.log('apitest');
+
         console.log(req.body.apiurl);
         options.hostname = url.parse(req.body.apiurl).hostname;
         options.path = url.parse(req.body.apiurl).pathname;
         options.method = req.body.method;
         options.headers.Authorization = 'Basic ' + new Buffer(req.body.username + ':' + req.body.password).toString('base64');
         options.agent = new https.Agent(options);
-        console.log('apitest1');
-        openshiftClient.excute(options, function(datas){
-            console.log(datas);
+
+        console.log('option : ' + options);
+        openshiftClient.optionsExcute(req, function(datas){
+
             if(datas){
-                res.status(200).json(JSON.parse(datas.toString('utf-8')));
+              res.status(200).json(JSON.parse(datas.toString('utf-8')));
             }else{
                 res.redirect('./api-test');
             }

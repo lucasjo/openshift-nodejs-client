@@ -40,6 +40,7 @@ $(document).ready(function(){
             $('#username').focus();
             $('.alert').show();
             btn.button('reset');
+            return false;
         }
 
         if($('#password').val() == ''){
@@ -47,6 +48,7 @@ $(document).ready(function(){
             $('#password').focus();
             $('.alert').show();
             btn.button('reset');
+            return false;
         }
         var historyStr = '<li class="list-group-item alert alert-info">' + $('#apiurl').val() + '</li>';
         $('.nav.nav-sidebar.list-group').append(historyStr)
@@ -57,6 +59,7 @@ $(document).ready(function(){
             data : formdata,
             url : '/apitest',
             success : function(data){
+
                 $('.panel-body').json2html(convert('json',data,'open'),transforms.object);
                 regEvents();
                 btn.button('reset');
